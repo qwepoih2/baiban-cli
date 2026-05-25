@@ -1,0 +1,13 @@
+#!/bin/sh
+# 转发给下载的二进制文件
+DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# 优先使用下载的二进制，否则尝试本地编译版
+if [ -f "$DIR/baiban-bin" ]; then
+  exec "$DIR/baiban-bin" "$@"
+elif [ -f "$DIR/baiban.exe" ]; then
+  exec "$DIR/baiban.exe" "$@"
+else
+  echo "错误: baiban 二进制未找到，请尝试重新安装: npm install -g baiban"
+  exit 1
+fi

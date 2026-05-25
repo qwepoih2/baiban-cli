@@ -1,0 +1,13 @@
+# ─── 全局设置 ───
+[settings]
+# GitHub 镜像，加速国内下载（留空或删除则直连 GitHub）
+mirror = "https://ghfast.top/"
+
+# ─── 模板列表 ───
+
+[[templates]]
+name = "react-admin"
+description = "React Admin 后台管理模板"
+repository = "https://github.com/qwepoih2/react-template-admin"
+branch = "main"
+tags = ["react", "admin", "typescript"]
