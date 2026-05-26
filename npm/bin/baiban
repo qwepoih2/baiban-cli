@@ -1,13 +1,22 @@
 #!/bin/sh
-# 转发给下载的二进制文件
-DIR="$(cd "$(dirname "$0")" && pwd)"
+# 解析符号链接，找到实际包目录
+SOURCE="$0"
+while [ -L "$SOURCE" ]; do
+  DIR="$(cd "$(dirname "$SOURCE")" && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  case "$SOURCE" in
+    /*) ;;
+    *) SOURCE="$DIR/$SOURCE" ;;
+  esac
+done
+DIR="$(cd "$(dirname "$SOURCE")" && pwd)"
 
-# 优先使用下载的二进制，否则尝试本地编译版
+# 优先使用下载的二进制
 if [ -f "$DIR/baiban-bin" ]; then
   exec "$DIR/baiban-bin" "$@"
 elif [ -f "$DIR/baiban.exe" ]; then
   exec "$DIR/baiban.exe" "$@"
 else
-  echo "错误: baiban 二进制未找到，请尝试重新安装: npm install -g baiban"
+  echo "错误: baiban 二进制未找到，请尝试重新安装: npm install -g baiban-cli"
   exit 1
 fi

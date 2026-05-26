@@ -5,7 +5,9 @@ const path = require("path");
 const https = require("https");
 const os = require("os");
 
-const VERSION = require("./package.json").version;
+// 可以改为和版本号一致，或者直接从 package.json 读取
+// const VERSION = require("./package.json").version;
+const VERSION = '0.1.0';
 const REPO = "qwepoih2/baiban-cli";
 
 // 检测平台
@@ -59,6 +61,7 @@ async function install() {
   const binaryPath = path.join(binDir, isWindows ? "baiban.exe" : "baiban-bin");
 
   // GitHub Release 下载地址
+  // https://github.com/qwepoih2/baiban-cli/releases/download/v0.1.0/baiban-darwin-arm64
   const url = `https://github.com/${REPO}/releases/download/v${VERSION}/${binaryName}`;
 
   console.log(`正在下载 baiban v${VERSION} (${binaryName})...`);

@@ -1,6 +1,6 @@
 {
-  "name": "baiban",
-  "version": "0.1.0",
+  "name": "baiban-cli",
+  "version": "0.1.2",
   "description": "Baiban CLI - 项目脚手架工具",
   "bin": {
     "baiban": "bin/baiban"
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/rrhu/baiban-cli.git"
+    "url": "https://github.com/qwepoih2/baiban-cli"
   },
   "keywords": ["cli", "scaffold", "template", "react"],
   "license": "MIT"
